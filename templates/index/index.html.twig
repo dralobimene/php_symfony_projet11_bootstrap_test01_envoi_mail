@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IndexController!{% endblock %}
+
+{% block body %}
+    
+    <hr>
+    
+    Accueil
+    <br>
+    Importation de Bootstrap.
+    <br>
+    Inclusion du _partials/_header.html.twig et du _partials/_footer.html.twig
+    <br>
+    Inclusion de la NavBar par defaut de Bootstrap
+    <br>
+    - utilisation de FlashMessage
+    <br>
+    - envois de mails de 2 manieres differentes.
+    <br>
+    -- codé en dur ds la premiere page.
+    <br>
+    -- grace à 1 service
+    <br>
+    - creation d'1 session uniquement sur cette page grace a
+    <br>
+    -- Notification
+    <br>
+    -- NotifierInterface
+    <br>
+    -- RequestStack
+    <br>
+    creat° d'1 commande console personnalisée: fonctionnelle et basique.
+    <br>
+    Il y a 1 argument ms je n'ai pas encore appris a m'en servir. A travailler.
+
+    <hr>
+
+    {% for notice in app.flashes('notice') %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="alert-message">
+                {{ notice|raw }}
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('notification') %}
+        <div class="alert alert-info alert-dismissible fade show">
+            {{ message|raw }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+
+    {% endfor %}
+    
+    {% for messagetest in app.session.flashBag.get('test') %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert-message">
+            {{ messagetest|raw }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <br>
+    <a href="/envoi/mail01">envoi mail 01</a>
+    <br>
+    l'adresse de l'intercepteur de mail mailHog: http://localhost:8025/
+    <br>
+    Cet email est envoyé via les class Mime/Email et Mail/MailerInterface
+    <br>
+    <hr>
+    <br>
+    Test de creat° d'1 commande CLI personnelle: app:talk-to-me
+    <br>
+    -01: adresse de ref:
+    <br>
+    https://symfonycasts.com/screencast/symfony-fundamentals/maker-command#play
+    <br>
+    Cree 1 commande CLI personnelle de base. "symfony console list", fait apparaitre la commande
+    <br>
+    ds la liste des commandes. Elle est executable par: "symfony console app:talk-to-me".
+    <br>
+    - 02: https://symfonycasts.com/screencast/symfony-fundamentals/custom-command#play
+    <br>
+    Ajoute 1 argument à la commande (pas encore viable à ce stade)
+    <br>
+    Et ajoute 1 flag à la commande. Visible par la commande "symfony console app: talk-to-me --help".
+    <br>
+    a la fin de l'etape 03, les commandes st viables ms n'ont encore aucun effet
+    <br>
+    commande 00: app: talk-to-me
+    <br>
+    commande 01: app: talk-to-me laurent
+    <br>
+    ou
+    <br>
+    commande 02: app: talk-to-me --flag
+    <br>
+    - 03: ce st les etapes 03 et 04 de l'implementat°. La nvelle commande CLI est fonctionnelle.
+    <hr>
+    <br>
+    1 envoi de mail executé par 1 service,
+    <br>
+    <a href="/envoi/mail02">envoi mail 02</a>
+    <br>
+    <hr>
+{% endblock %}
