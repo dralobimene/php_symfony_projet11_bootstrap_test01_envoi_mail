@@ -11,4 +11,4 @@
     -- RequestStack
     Creat° d'1 commande console personnalisée: fonctionnelle et basique.
     Il y a 1 argument ms je n'ai pas encore appris a m'en servir. A travailler.
-
+    L'envoi de mail a été testé avec l'intercepteur de mail MailHog, pas testé en condition réelle.
